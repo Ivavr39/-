@@ -12,7 +12,7 @@ export class FormularzCompComponent implements OnInit {
 
   constructor() { }
 
-  readyJSON: FormData;
+  readyJSON: FormData = {} as FormData;
 
 
   //    // tslint:disable-next-line: no-input-rename
@@ -39,6 +39,7 @@ export class FormularzCompComponent implements OnInit {
  }
    submitForm(): void {
      this.clickEvent.emit(this.readyJSON);
+     this.readyJSON = {} as FormData;
      console.log(this.readyJSON);
     }
 
