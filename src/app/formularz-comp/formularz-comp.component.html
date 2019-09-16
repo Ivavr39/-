@@ -1,0 +1,35 @@
+ <!-- <input type="text" [(ngModel)]="readyJSON.emailFrom" [(ngModel)]="readyJSON.emailTo" [(ngModel)]="readyJSON.emailCc" [(ngModel)]="readyJSON.emailSub" [(ngModel)]="readyJSON.emailBody"/> -->
+ <!-- <input type="text" [(ngModel)]="formData.emailFrom"/>
+ <input type="text" [(ngModel)]="formData.emailTo" /> -->
+
+ <div class = "main">
+   <h1>Fill In Form</h1>
+<!-- <form #emailForm="ngForm" #form="ngForm" class="form form-register"> -->
+  <div class="form-group" data-id="title_1">
+  <label for="from">Email From</label>
+  <input type="text" id="from" required (ngModel)="readyJSON.emailFrom"/>
+  </div>
+  <div class="form-group">
+  <label for="to">Email To</label>
+  <input type="text" id="to" required (ngModel)="readyJSON.emailTo"/>
+  </div>
+
+  <div class="form-group" data-id="title_3">
+  <label for="cc">Email CC</label>
+  <input type="text" id="cc" required (ngModel) ="readyJSON.emailCc"/>
+  </div>
+
+  <div class="form-group" data-id="title_4">
+  <label for="sub">Email Subject</label>
+  <input type="text" id="sub" required (ngModel)="readyJSON.emailSub"/>
+  </div>
+
+  <div class="form-group" data-id="title_5">
+  <label for="text">Email</label>
+  <input type="text" id="text" required (ngModel) ="readyJSON.emailBody"/>
+  </div>
+  <button (click)="submitForm()">Submit</button>
+<!-- </form> -->
+</div>
+
+<code>{{ readyJSON | json }}</code>

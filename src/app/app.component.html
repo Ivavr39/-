@@ -1,0 +1,9 @@
+  <!--
+  <input type="text" [(ngModel)]="formData.emailFrom"/>
+  <input type="text" [(ngModel)]="formData.emailTo" />
+  <code> {{formData | json}}</code>
+  <button (click)="submitForm()">Submit</button> -->
+
+  <app-send-data (sendDataEvent)="sendEmail($event)"></app-send-data>
+  <app-display-data [(getData)]="getData">Input Text Here</app-display-data>
+  <app-formularz-comp></app-formularz-comp>
