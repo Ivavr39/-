@@ -9,21 +9,23 @@ import { DisplayDataComponent } from './display-data/display-data.component';
 import { SendDataComponent } from './send-data/send-data.component';
 import { FormularzCompComponent } from './formularz-comp/formularz-comp.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DisplayDataComponent,
     SendDataComponent,
     FormularzCompComponent,
-     ],
+         ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+
   ],
-  providers: [],
+  providers: [ FormularzCompComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,47 +1,28 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Injectable, Input } from '@angular/core';
 import { FormData } from '../formularz';
-import { stringify } from 'querystring';
-
 
 @Component({
   selector: 'app-formularz-comp',
   templateUrl: 'formularz-comp.component.html',
-  styleUrls: ['./formularz-comp.component.scss']
+  styleUrls: ['./formularz-comp.component.css']
 })
+
 export class FormularzCompComponent implements OnInit {
+  @Output()
+   outputToParent: EventEmitter<FormData> = new EventEmitter<FormData>();
 
   constructor() { }
 
-  readyJSON: FormData;
+  readyJSON: FormData = {} as FormData;
 
+      ngOnInit() {
+   }
 
-  //    // tslint:disable-next-line: no-input-rename
-  //  @Input('emailfrom') public emailFrom: string;
-  //  // tslint:disable-next-line: no-input-rename
-  //  @Input('emailto') public emailTo: string;
-  //  // tslint:disable-next-line: no-input-rename
-  //  @Input('emailcc') public emailCc: string;
-  //  // tslint:disable-next-line: no-input-rename
-  //  @Input('emailsub') public emailSub: string;
-  //  // tslint:disable-next-line: no-input-rename
-  //  @Input('emailbody') public emailBody: string;
-
-   @Output() clickEvent: EventEmitter<FormData> = new EventEmitter();
-
-    ngOnInit() {
-  //     //  this.readyJSON = {
-  //   //  emailFrom: this.emailFrom,
-  //   //  emailTo: this.emailTo,
-  //   //  emailCc: this.emailCc,
-  //   //  emailSub: this.emailSub,
-  //   //  emailBody: this.emailBody
-  //  }
- }
    submitForm(): void {
-     this.clickEvent.emit(this.readyJSON);
-     console.log(this.readyJSON);
+    this.outputToParent.emit(this.readyJSON);
+    //  this.readyJSON = {} as FormData;
+    console.log(this.readyJSON);
     }
-
 
 }
 

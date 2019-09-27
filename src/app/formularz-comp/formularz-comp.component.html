@@ -2,34 +2,34 @@
  <!-- <input type="text" [(ngModel)]="formData.emailFrom"/>
  <input type="text" [(ngModel)]="formData.emailTo" /> -->
 
- <div class = "main">
-   <h1>Fill In Form</h1>
-<!-- <form #emailForm="ngForm" #form="ngForm" class="form form-register"> -->
+ <div class = "form-style-8">
+   <h2>Fill In Form</h2>
   <div class="form-group" data-id="title_1">
   <label for="from">Email From</label>
-  <input type="text" id="from" required (ngModel)="readyJSON.emailFrom"/>
+  <input type="text" id="from" name="field1" required [(ngModel)]="readyJSON.emailFrom"/>
   </div>
   <div class="form-group">
   <label for="to">Email To</label>
-  <input type="text" id="to" required (ngModel)="readyJSON.emailTo"/>
+  <input type="text" id="to" name="field2" required [(ngModel)]="readyJSON.emailTo"/>
   </div>
 
   <div class="form-group" data-id="title_3">
   <label for="cc">Email CC</label>
-  <input type="text" id="cc" required (ngModel) ="readyJSON.emailCc"/>
+  <input type="text" id="cc" name="field3" required [(ngModel)] ="readyJSON.emailCc"/>
   </div>
 
   <div class="form-group" data-id="title_4">
   <label for="sub">Email Subject</label>
-  <input type="text" id="sub" required (ngModel)="readyJSON.emailSub"/>
+  <input type="text" id="sub" name="field4" required [(ngModel)]="readyJSON.emailSubject"/>
   </div>
 
   <div class="form-group" data-id="title_5">
   <label for="text">Email</label>
-  <input type="text" id="text" required (ngModel) ="readyJSON.emailBody"/>
+  <input type="text" id="text" name="field5" required [(ngModel)] ="readyJSON.emailBody"/>
   </div>
-  <button (click)="submitForm()">Submit</button>
-<!-- </form> -->
+  <button (click)="submitForm()">Submit - Send EMail</button>
+  </div>
+<div class="form-group" > Prepared JSON <br>
+  <code>{{ readyJSON | json }}</code>
 </div>
 
-<code>{{ readyJSON | json }}</code>

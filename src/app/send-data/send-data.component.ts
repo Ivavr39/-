@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Email } from '../model';
 
 @Component({
   selector: 'app-send-data',
@@ -7,25 +8,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SendDataComponent implements OnInit {
 
-  public text: string;
-
+  // public text: string;
+  childCurrentValue: FormData ;
   // public readyJSON: formData;
 
   // @Input() readyJson: FormData | any;
 
-  @Output() sendDataEvent: EventEmitter<any> = new EventEmitter();
+  @Output() sendDataEvent: EventEmitter<FormData> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  // collectJson(): void {
-  //   this.readyJson = this.text;
-  //   console.log(this.text)
-  // }
-
   sendData(): void {
-    this.sendDataEvent.emit(this.text);
+    console.log(this.childCurrentValue + '!!!');
+    this.sendDataEvent.emit(this.childCurrentValue);
   }
 }

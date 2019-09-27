@@ -2,6 +2,6 @@ export interface FormData {
      emailFrom: string;
      emailTo: string;
      emailCc: string;
-     emailSub: string;
+     emailSubject: string;
      emailBody: string;
 }

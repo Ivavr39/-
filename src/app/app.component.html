@@ -4,6 +4,8 @@
   <code> {{formData | json}}</code>
   <button (click)="submitForm()">Submit</button> -->
 
-  <app-send-data (sendDataEvent)="sendEmail($event)"></app-send-data>
+  <!-- <app-send-data (sendDataEvent)="sendEmail($event)"></app-send-data> -->
   <app-display-data [(getData)]="getData">Input Text Here</app-display-data>
-  <app-formularz-comp></app-formularz-comp>
+  <p>{{childCurrentValue | json}}</p>
+  <app-formularz-comp (outputToParent)="sendEmail($event)"></app-formularz-comp>
+

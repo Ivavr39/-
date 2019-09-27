@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Email } from '../model';
 
+import { FormData } from '../formularz';
+
 @Component({
   selector: 'app-display-data',
   templateUrl: './display-data.component.html',
@@ -8,11 +10,12 @@ import { Email } from '../model';
 })
 export class DisplayDataComponent implements OnInit {
 
-  @Input()
-  getData: Email;
+  // @Input() readyData: FormData;
+  @Input() getData: Email;
+
+
   constructor() {}
 
   ngOnInit(): void {}
 
- }
-
+}
