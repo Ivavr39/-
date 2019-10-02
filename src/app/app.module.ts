@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {FileInputAccessorModule} from 'file-input-accessor';
+import { AlertModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,15 +18,16 @@ import { FormularzCompComponent } from './formularz-comp/formularz-comp.componen
     DisplayDataComponent,
     SendDataComponent,
     FormularzCompComponent,
-         ],
+             ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     HttpClientJsonpModule,
-
-  ],
+    FileInputAccessorModule,
+    AlertModule.forRoot()
+          ],
   providers: [ FormularzCompComponent ],
   bootstrap: [AppComponent]
 })

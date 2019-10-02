@@ -4,4 +4,5 @@ export interface FormData {
      emailCc: string;
      emailSubject: string;
      emailBody: string;
+     emailFileList: File;
 }

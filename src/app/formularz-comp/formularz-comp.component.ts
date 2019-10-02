@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, OnInit, Injectable, Input } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormData } from '../formularz';
+import { log } from 'util';
 
 @Component({
   selector: 'app-formularz-comp',
@@ -7,16 +8,11 @@ import { FormData } from '../formularz';
   styleUrls: ['./formularz-comp.component.css']
 })
 
-export class FormularzCompComponent implements OnInit {
-  @Output()
-   outputToParent: EventEmitter<FormData> = new EventEmitter<FormData>();
+export class FormularzCompComponent {
 
-  constructor() { }
+  @Output() outputToParent: EventEmitter<FormData> = new EventEmitter<FormData>();
 
-  readyJSON: FormData = {} as FormData;
-
-      ngOnInit() {
-   }
+   readyJSON: FormData = {} as FormData;
 
    submitForm(): void {
     this.outputToParent.emit(this.readyJSON);

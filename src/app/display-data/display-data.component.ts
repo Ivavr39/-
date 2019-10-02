@@ -8,14 +8,9 @@ import { FormData } from '../formularz';
   templateUrl: './display-data.component.html',
   styleUrls: ['./display-data.component.scss']
 })
-export class DisplayDataComponent implements OnInit {
+export class DisplayDataComponent {
 
   // @Input() readyData: FormData;
   @Input() getData: Email;
-
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
 }

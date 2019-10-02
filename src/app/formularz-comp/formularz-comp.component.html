@@ -1,35 +1,57 @@
- <!-- <input type="text" [(ngModel)]="readyJSON.emailFrom" [(ngModel)]="readyJSON.emailTo" [(ngModel)]="readyJSON.emailCc" [(ngModel)]="readyJSON.emailSub" [(ngModel)]="readyJSON.emailBody"/> -->
- <!-- <input type="text" [(ngModel)]="formData.emailFrom"/>
- <input type="text" [(ngModel)]="formData.emailTo" /> -->
-
- <div class = "form-style-8">
+ <form class="form-control">
+   <div class ="form-style-8">
    <h2>Fill In Form</h2>
-  <div class="form-group" data-id="title_1">
-  <label for="from">Email From</label>
-  <input type="text" id="from" name="field1" required [(ngModel)]="readyJSON.emailFrom"/>
-  </div>
+
   <div class="form-group">
-  <label for="to">Email To</label>
-  <input type="text" id="to" name="field2" required [(ngModel)]="readyJSON.emailTo"/>
+    <label for="from">Email From</label>
+    <input type="text" id="from"  name="field1" #field1 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="readyJSON.emailFrom"/>
+    <div class="alert alert-danger" *ngIf="field1.touched && !field1.valid">
+       <div *ngIf="field1.errors['required']"> Email is required </div>
+       <div *ngIf="field1.errors['pattern']"> Only Email</div>
+  </div>
   </div>
 
-  <div class="form-group" data-id="title_3">
-  <label for="cc">Email CC</label>
-  <input type="text" id="cc" name="field3" required [(ngModel)] ="readyJSON.emailCc"/>
+  <div class="form-group">
+    <label for="to">Email To</label>
+    <input  type="text" id="to"  name="field2" #field2 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [(ngModel)]="readyJSON.emailTo"/>
+    <div class="alert alert-danger" *ngIf="field2.touched && !field1.valid">
+        <div *ngIf="field2.errors['required']"> Email is Required </div>
+        <div *ngIf="field2.errors['pattern']"> Only Email</div>
+   </div>
   </div>
 
-  <div class="form-group" data-id="title_4">
-  <label for="sub">Email Subject</label>
-  <input type="text" id="sub" name="field4" required [(ngModel)]="readyJSON.emailSubject"/>
+  <div class="form-group">
+    <label for="cc">Email CC</label>
+    <input  type="text" id="cc" name="field3" #field3 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)] ="readyJSON.emailCc"/>
+    <div class="alert alert-danger" *ngIf="field3.touched && !field1.valid">
+        <div *ngIf="field3.errors['required']"> Email Is Required </div>
+        <div *ngIf="field3.errors['pattern']"> Only Email</div>
+   </div>
   </div>
 
-  <div class="form-group" data-id="title_5">
-  <label for="text">Email</label>
-  <input type="text" id="text" name="field5" required [(ngModel)] ="readyJSON.emailBody"/>
+  <div class="form-group">
+    <label for="sub">Email Subject</label>
+    <input type="text" id="sub" name="field4" #field4 = "ngModel" required [(ngModel)]="readyJSON.emailSubject"/>
+    <div class="alert alert-danger" *ngIf="field4.touched && !field4.valid"> Required </div>
   </div>
-  <button (click)="submitForm()">Submit - Send EMail</button>
+
+  <div class="form-group">
+    <label for="text">Email</label>
+    <textarea id="text" ngModel name="field5" #field5 = "ngModel" required [(ngModel)]="readyJSON.emailBody"></textarea>
   </div>
+  <div class="alert alert-danger" *ngIf="field5.touched && !field5.valid"> Required </div>
+  <div class="form-group">
+    <label for="file">Attach File</label>
+    <p>(.jpg,.png,.pdf,.docx,.txt,.gif,.jpeg) Size limit- 20.00 MB</p>
+    <input type="file" id="file" ngModel name="field6" #field6="ngModel"   [(ngModel)]="readyJSON.emailFileList">
+  </div>
+  <br>
+  <br>
+  <button class="btn btn-primary" (click)="submitForm()">Send Mail</button>
+  </div>
+</form>
 <div class="form-group" > Prepared JSON <br>
   <code>{{ readyJSON | json }}</code>
 </div>
+
 

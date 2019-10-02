@@ -1,11 +1,6 @@
-  <!--
-  <input type="text" [(ngModel)]="formData.emailFrom"/>
-  <input type="text" [(ngModel)]="formData.emailTo" />
-  <code> {{formData | json}}</code>
-  <button (click)="submitForm()">Submit</button> -->
 
+  <!-- <p>{{childCurrentValue | json}}</p> -->
+<app-formularz-comp (outputToParent)="sendEmail($event)"></app-formularz-comp>
   <!-- <app-send-data (sendDataEvent)="sendEmail($event)"></app-send-data> -->
-  <app-display-data [(getData)]="getData">Input Text Here</app-display-data>
-  <p>{{childCurrentValue | json}}</p>
-  <app-formularz-comp (outputToParent)="sendEmail($event)"></app-formularz-comp>
+<app-display-data [(getData)]="getData"></app-display-data>
 

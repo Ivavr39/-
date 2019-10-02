@@ -9,7 +9,8 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AppServiceService {
-  private readonly baseUrl = 'http://10.218.75.164:8088';
+  private readonly baseUrl = 'http://10.218.75.164:8088/mail/';
+  // private readonly baseUrl = 'http://10.218.75.164:8089/testcors/';
   // email: Email;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -19,18 +20,17 @@ export class AppServiceService {
     }),
     withCredentials: false
   };
-    CORS_ORIGIN_WHITELIST = (
-      'http://localhost:4200'
-  );
+    // CORS_ORIGIN_WHITELIST = (
+    //   'http://localhost:4200');
 
   constructor(private httpClient: HttpClient) { }
 
   postEmailPlaintext(data): Observable<FormData> {
-    return this.httpClient.post<FormData>(`${this.baseUrl}/mail/plaintext`, data, this.httpOptions);
+    return this.httpClient.post<FormData>(`${this.baseUrl}plaintext`, data, this.httpOptions);
   }
 
   getEmailPlaintext(data): Observable<Email> {
-    return this.httpClient.post<Email>(`${this.baseUrl}/mail/plaintext`, data, this.httpOptions);
+    return this.httpClient.post<Email>(`${this.baseUrl}`, data, this.httpOptions);
   }
 
   getEmailPlaintextWithAtt(data): Observable<Email> {
