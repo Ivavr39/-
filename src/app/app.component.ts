@@ -20,32 +20,17 @@ export class AppComponent {
 
   jsonToSend: EventEmitter<FormData> = new EventEmitter<FormData>();
 
+
   sendEmail(sendData) {
     this.childCurrentValue = sendData;
-    console.log('Вот такие данные: ' + JSON.stringify(sendData));
+
+    if (!this.childCurrentValue.emailFileList) {
     this.appService.postEmailPlaintext(sendData).subscribe(( data: any ) => {
       return this.getData = data;
     });
-   }
-
-  // sendEmail(sendData) {
-  //   this.childCurrentValue = sendData;
-  //   console.log('Вот такие данные: ' + JSON.stringify(sendData));
-  //   this.appService.postEmailPlaintext(sendData).subscribe(( data: FormData ) => this.childCurrentValue = data );
-  // / getOutputValue(sendJson) {
-  //   return this.childCurrentValue = sendJson ;
-  // }
-  // postJson(): FormData {
-  //   this.jsonToSend.emit(this.childCurrentValue);
-  //  //  this.readyJSON = {} as FormData;
-  //   console.log(this.childCurrentValue);
-  //   return this.childCurrentValue;
-  //  }
-
-  // //  sentEmail(sentJson) {
-  //   this.childCurrentValue = sentJson;
-  //   this.appService.postEmailPlaintext(sentJson).subscribe((data1: FormData) => this.childCurrentValue = data1);
-  // }
-
-
-}
+    } else {
+    this.appService.postEmailPlaintextWithAtt(sendData).subscribe(( data: any ) => {
+      return this.getData = data;
+    });
+    console.log('Вот такие данные: ' + JSON.stringify(sendData));
+    }}}

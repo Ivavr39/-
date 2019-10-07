@@ -16,10 +16,12 @@ export class AppServiceService {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
       'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
+      data: 'string'
     }),
     withCredentials: false
   };
+
     // CORS_ORIGIN_WHITELIST = (
     //   'http://localhost:4200');
 
@@ -29,18 +31,19 @@ export class AppServiceService {
     return this.httpClient.post<FormData>(`${this.baseUrl}plaintext`, data, this.httpOptions);
   }
 
-  getEmailPlaintext(data): Observable<Email> {
-    return this.httpClient.post<Email>(`${this.baseUrl}`, data, this.httpOptions);
-  }
+  // getEmailPlaintext(data): Observable<Email> {
+  //   return this.httpClient.post<Email>(`${this.baseUrl}`, data, this.httpOptions);
+  // }
 
-  getEmailPlaintextWithAtt(data): Observable<Email> {
-    return this.httpClient.post<Email>(`${this.baseUrl}/plaintext/attachment`, data);
+  postEmailPlaintextWithAtt(data): Observable<FormData> {
+    return this.httpClient.post<FormData>(`${this.baseUrl}plaintext/attachment`, data, {});
   }
   getEmailHTML(data): Observable<Email> {
     return this.httpClient.post<Email>(`${this.baseUrl}/html`, data);
   }
   getEmailHTMLAtt(data): Observable<Email> {
-    return this.httpClient.post<Email>(`${this.baseUrl}/html/attachment`, data);
+    return this.httpClient.post<Email>(`${this.baseUrl}html/attachment`, data);
   }
+
 
 }

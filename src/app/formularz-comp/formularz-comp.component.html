@@ -1,57 +1,140 @@
- <form class="form-control">
+ <form #f="ngForm">
    <div class ="form-style-8">
    <h2>Fill In Form</h2>
 
   <div class="form-group">
     <label for="from">Email From</label>
-    <input type="text" id="from"  name="field1" #field1 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="readyJSON.emailFrom"/>
-    <div class="alert alert-danger" *ngIf="field1.touched && !field1.valid">
-       <div *ngIf="field1.errors['required']"> Email is required </div>
-       <div *ngIf="field1.errors['pattern']"> Only Email</div>
-  </div>
+    <input required
+     ngModel
+     type="text"
+     id="from"
+     name="field1"
+     #field1 = "ngModel"
+     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+     [(ngModel)]="readyJSON.emailFrom"/>
+    <div
+     class="alert alert-danger"
+     *ngIf="field1.touched && !field1.valid">
+       <div
+        *ngIf="field1.errors['required']">
+       Email is required
+      </div>
+       <div
+        *ngIf="field1.errors['pattern']">
+       Only Email
+     </div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="to">Email To</label>
-    <input  type="text" id="to"  name="field2" #field2 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [(ngModel)]="readyJSON.emailTo"/>
-    <div class="alert alert-danger" *ngIf="field2.touched && !field1.valid">
-        <div *ngIf="field2.errors['required']"> Email is Required </div>
-        <div *ngIf="field2.errors['pattern']"> Only Email</div>
+    <input
+      required
+      ngModel
+      type="text"
+      id="to"
+      name="field2"
+      #field2 = "ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [(ngModel)]="readyJSON.emailTo"/>
+    <div
+      class="alert alert-danger"
+      *ngIf="field2.touched && !field2.valid">
+        <div
+          *ngIf="field2.errors['required']">
+          Email is Required
+        </div>
+        <div
+          *ngIf="field2.errors['pattern']">
+         Only Email
+        </div>
    </div>
   </div>
 
   <div class="form-group">
     <label for="cc">Email CC</label>
-    <input  type="text" id="cc" name="field3" #field3 = "ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)] ="readyJSON.emailCc"/>
-    <div class="alert alert-danger" *ngIf="field3.touched && !field1.valid">
-        <div *ngIf="field3.errors['required']"> Email Is Required </div>
-        <div *ngIf="field3.errors['pattern']"> Only Email</div>
+    <input
+      ngModel
+      type="text" id="cc"
+      name="field3" #field3 = "ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [(ngModel)] ="readyJSON.emailCc"/>
+    <div
+      class="alert alert-danger"
+      *ngIf="field3.touched && !field3.valid">
+        <div
+        *ngIf="field3.errors['required']">
+        Email Is Required
+        </div>
+        <div
+        *ngIf="field3.errors['pattern']">
+         Only Email
+        </div>
    </div>
   </div>
 
   <div class="form-group">
     <label for="sub">Email Subject</label>
-    <input type="text" id="sub" name="field4" #field4 = "ngModel" required [(ngModel)]="readyJSON.emailSubject"/>
-    <div class="alert alert-danger" *ngIf="field4.touched && !field4.valid"> Required </div>
+    <input
+     required
+     ngModel
+     type="text"
+     id="sub"
+     name="field4"
+     #field4 = "ngModel"
+     [(ngModel)]="readyJSON.emailSubject"/>
+    <div
+     class="alert alert-danger"
+     *ngIf="field4.touched && !field4.valid">
+     Required
+     </div>
   </div>
 
   <div class="form-group">
     <label for="text">Email</label>
-    <textarea id="text" ngModel name="field5" #field5 = "ngModel" required [(ngModel)]="readyJSON.emailBody"></textarea>
+    <textarea
+     required
+     ngModel
+     id="text"
+     name="field5"
+     #field5 = "ngModel"
+     [(ngModel)]="readyJSON.emailBody">
+    </textarea>
   </div>
-  <div class="alert alert-danger" *ngIf="field5.touched && !field5.valid"> Required </div>
+  <div class="form-group alert alert-danger"
+   *ngIf="field5.touched && !field5.valid">
+   Required
+   </div>
   <div class="form-group">
     <label for="file">Attach File</label>
     <p>(.jpg,.png,.pdf,.docx,.txt,.gif,.jpeg) Size limit- 20.00 MB</p>
-    <input type="file" id="file" ngModel name="field6" #field6="ngModel"   [(ngModel)]="readyJSON.emailFileList">
+    <input
+     ngModel
+     #fileInput
+     type="file"
+     id="file"
+     name="field6"
+     #field6="ngModel"
+     [(ngModel)]="readyJSON.emailFileList"
+     (change) = "onFileUpload()">
+     <button
+      type="button"
+      class="btn btn-success btn-s">
+      Upload a File
+  </button>
   </div>
   <br>
   <br>
-  <button class="btn btn-primary" (click)="submitForm()">Send Mail</button>
+
+  <button class="btn btn-primary" [disabled] = "!f.valid"
+     (click)="submitForm()">
+     Send Mail
+    </button>
   </div>
 </form>
-<div class="form-group" > Prepared JSON <br>
+<div class="form-group"  > Prepared JSON <br>
   <code>{{ readyJSON | json }}</code>
+  <!-- <code>{{ uploader | json}}</code> -->
 </div>
 
 

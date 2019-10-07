@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Email } from '../model';
 
-import { FormData } from '../formularz';
-
 @Component({
   selector: 'app-display-data',
   templateUrl: './display-data.component.html',
@@ -10,7 +8,6 @@ import { FormData } from '../formularz';
 })
 export class DisplayDataComponent {
 
-  // @Input() readyData: FormData;
   @Input() getData: Email;
 
 }
