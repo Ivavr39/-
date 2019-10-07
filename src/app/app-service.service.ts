@@ -17,7 +17,6 @@ export class AppServiceService {
       'Content-Type':  'application/json',
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Allow-Origin': '*',
-      data: 'string'
     }),
     withCredentials: false
   };
@@ -36,7 +35,8 @@ export class AppServiceService {
   // }
 
   postEmailPlaintextWithAtt(data): Observable<FormData> {
-    return this.httpClient.post<FormData>(`${this.baseUrl}plaintext/attachment`, data, {});
+    // tslint:disable-next-line: max-line-length
+    return this.httpClient.post<FormData>(`${this.baseUrl}plaintext/attachment?emailDetails=${JSON.stringify(data)}`, data, this.httpOptions);
   }
   getEmailHTML(data): Observable<Email> {
     return this.httpClient.post<Email>(`${this.baseUrl}/html`, data);

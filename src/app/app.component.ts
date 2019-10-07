@@ -20,7 +20,6 @@ export class AppComponent {
 
   jsonToSend: EventEmitter<FormData> = new EventEmitter<FormData>();
 
-
   sendEmail(sendData) {
     this.childCurrentValue = sendData;
 

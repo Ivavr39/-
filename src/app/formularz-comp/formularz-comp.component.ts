@@ -34,9 +34,7 @@ export class FormularzCompComponent implements OnInit {
 
     });
     }
-
     submitForm(): void {
     this.outputToParent.emit(this.readyJSON);
-      //  this.readyJSON = {} as FormData;
     console.log(JSON.stringify(this.readyJSON));
     }}
